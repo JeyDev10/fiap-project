@@ -1,0 +1,37 @@
+.header-section {
+  height: 1473px;
+  margin-top: 47rem;
+  position: relative;
+  padding-left: 32.1rem;
+  padding-right: 35.8rem;
+}
+
+.header-paragraph {
+  position: relative;
+  letter-spacing: -0.8rem;
+  span {
+    display: block;
+    font-size: 11rem;
+    line-height: 7.7rem;
+    margin-left: 4.8rem;
+  }
+
+  span:first-of-type {
+    margin-left: 12.4rem;
+    margin-right: 10.7rem;
+    margin-bottom: 2.2rem;
+  }
+
+  z-index: 2;
+}
+
+.background-text {
+  display: inline;
+  font-size: 35rem;
+  line-height: 35rem;
+  font-weight: 900;
+  color: #0b0c0d;
+  position: absolute;
+  top: 0.2rem;
+  z-index: 1;
+}
