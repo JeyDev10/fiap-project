@@ -5,8 +5,8 @@ export function WaterSection() {
   useGSAP(() => {
     const canvas = document.getElementById("water-canvas") as HTMLCanvasElement
     const context = canvas.getContext("2d")
-    canvas.width = 1920
-    canvas.height = 1080
+    canvas.width = window.innerWidth > 1920 ? 1920 : window.innerWidth
+    canvas.height = window.innerHeight > 1080 ? 1080 : window.innerHeight
 
     canvas.style.display = "block"
     canvas.style.margin = "0 auto"
@@ -47,7 +47,7 @@ export function WaterSection() {
       context?.clearRect(0, 0, canvas.width, canvas.height)
       context?.drawImage(images[water.frame], 0, 0)
     }
-  })
+  }, [window.innerWidth, window.innerHeight])
 
   return (
     <section className="water-section">

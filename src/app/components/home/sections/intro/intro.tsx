@@ -15,8 +15,7 @@ export function IntroSection() {
   const imageContainerRef = useRef<HTMLDivElement>(null)
   const isMobile = useIsMobile()
 
-  useGSAP(() => {
-    // Animations for intro first texts
+  useGSAP(function handdleFirstTextAnimation() {
     gsap.to(".text-slide-left", {
       xPercent: -100,
       duration: 15,
@@ -39,7 +38,20 @@ export function IntroSection() {
   })
 
   useGSAP(
-    () => {
+    function handleImageTransition() {
+      gsap.to(".image-reveal-transition-panel", {
+        scrollTrigger: imageContainerRef.current,
+        yPercent: 200,
+        duration: 30,
+        ease: "power3.out",
+        toggleActions: "play none none reverse"
+      })
+    },
+    { scope: imageContainerRef }
+  )
+
+  useGSAP(
+    function handleSecondTextAnimation() {
       const slideToLeftAnimation = gsap.to(".image-text-slide-left", {
         xPercent: -100,
         duration: 10,
@@ -66,24 +78,31 @@ export function IntroSection() {
       ScrollTrigger.create({
         trigger: imageContainerRef.current,
         start: "top bottom",
-        end: "bottom top"
+        end: "bottom top",
+        onUpdate: (self) => {
+          if (self.direction === 1) {
+            slideToLeftAnimation.reversed(false)
+            slideToRightAnimation.reversed(false)
+          } else {
+            slideToLeftAnimation.reversed(true)
+            slideToRightAnimation.reversed(true)
+          }
+        }
       })
 
       ScrollTrigger.addEventListener("scrollStart", function () {
-        slideToLeftAnimation.timeScale(2.5)
-        slideToRightAnimation.timeScale(2.5)
+        slideToLeftAnimation.timeScale(
+          slideToLeftAnimation.reversed() ? -2.3 : 2.3
+        )
+        slideToRightAnimation.timeScale(
+          slideToRightAnimation.reversed() ? -2.3 : 2.3
+        )
       })
       ScrollTrigger.addEventListener("scrollEnd", function () {
-        slideToLeftAnimation.timeScale(1)
-        slideToRightAnimation.timeScale(1)
-      })
-
-      gsap.to(".image-reveal-transition-panel", {
-        scrollTrigger: imageContainerRef.current,
-        yPercent: 200,
-        duration: 8,
-        ease: "power3.out",
-        toggleActions: "play none none reverse"
+        slideToLeftAnimation.timeScale(slideToLeftAnimation.reversed() ? -1 : 1)
+        slideToRightAnimation.timeScale(
+          slideToRightAnimation.reversed() ? -1 : 1
+        )
       })
     },
     { scope: imageContainerRef, dependencies: [window.innerWidth] }
