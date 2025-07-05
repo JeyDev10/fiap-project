@@ -3,10 +3,32 @@
   width: 100%;
   height: 12rem;
   max-height: 80px;
-  background-color: $nav-bar-background;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
+  opacity: 1;
   z-index: 10;
+  progress {
+    position: absolute;
+    bottom: -5px;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    border: none;
+    background: transparent;
+  }
+
+  progress::-webkit-progress-bar {
+    background: transparent;
+  }
+  progress::-webkit-progress-value {
+    background: #f80d5a;
+    background-attachment: fixed;
+  }
+  progress::-moz-progress-bar {
+    background: #f80d5a;
+    background-attachment: fixed;
+  }
 }

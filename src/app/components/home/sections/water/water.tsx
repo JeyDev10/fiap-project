@@ -1,14 +1,16 @@
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 
-import "./water.scss"
-
 export function WaterSection() {
   useGSAP(() => {
     const canvas = document.getElementById("water-canvas") as HTMLCanvasElement
     const context = canvas.getContext("2d")
     canvas.width = 1920
     canvas.height = 1080
+
+    canvas.style.display = "block"
+    canvas.style.margin = "0 auto"
+
     if (!context) return
     const frameCount = 191
     const currentFrame = (index: number): string =>
@@ -24,8 +26,6 @@ export function WaterSection() {
       img.src = currentFrame(i)
       images.push(img)
     }
-
-    console.log("images", images)
 
     gsap.to(water, {
       frame: frameCount - 1,

@@ -1,40 +1,56 @@
 .courses-section {
   display: flex;
   flex-direction: column;
-  padding: 1rem 35.2rem 1rem 25.3rem;
+  padding: 1rem 35.3rem 1rem 21.2rem;
+  margin-top: 28.8rem;
   * {
     font-weight: 400;
   }
-  .courses-title {
-    font-size: 9.2rem;
-    color: #fff;
-    text-align: left;
-    margin-bottom: 1.3rem;
+
+  @media (max-width: 1024px) {
+    padding: 1rem 4rem 1rem 4rem;
   }
-  .courses-subtitle {
-    font-size: 2.2rem;
-    color: #f80d5a;
-    text-align: left;
-  }
-  .courses-nav {
-    margin-top: 10.5rem;
-    ul {
-      display: flex;
-      gap: 9.8rem;
-      list-style: none;
-      li span {
-        display: block;
-        font-size: 2.2rem;
-        color: #8a959b;
-        transition: ease-in-out 0.3s;
-        &:hover {
-          color: #fff;
-        }
+
+  .courses-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title-container {
+      .courses-title {
+        font-size: 9.2rem;
+        line-height: 9.2rem;
+        color: #fff;
+        text-align: left;
+        margin-bottom: 1.3rem;
       }
-      li .animation-trace {
-        height: 0.6rem;
-        width: 0;
-        background-color: #f80d5a;
+      .courses-subtitle {
+        font-size: 2.2rem;
+        color: #f80d5a;
+        text-align: left;
+      }
+    }
+
+    .courses-nav {
+      ul {
+        display: flex;
+        gap: 9.8rem;
+        list-style: none;
+        li span {
+          display: block;
+          font-size: 2.2rem;
+          line-height: 3rem;
+          transition: ease-in-out 0.3s;
+          color: #8a959b;
+          &:hover {
+            color: #fff;
+          }
+        }
+        li .animation-trace {
+          height: 0.6rem;
+          width: 0;
+          background-color: #f80d5a;
+        }
       }
     }
   }
@@ -45,19 +61,103 @@
     flex-direction: column;
     align-items: flex-start;
     margin-top: 3rem;
+    gap: 3rem;
+
+    .courses-title-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12.5rem;
+      .expand-button {
+        position: relative;
+        height: 10rem;
+        width: 10rem;
+        background-color: #ed145b;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .horizontal-trace {
+          display: block;
+          width: 50%;
+          height: 1rem;
+          background-color: black;
+          border-radius: 0.2rem;
+        }
+
+        .vertical-trace {
+          display: block;
+          position: absolute;
+          width: 1rem;
+          height: 50%;
+          background-color: black;
+          right: 4.5rem;
+          border-radius: 0.2rem;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        margin-bottom: 5rem;
+      }
+    }
     .courses-content-title {
       font-size: 5.5rem;
       color: #fff;
-      margin-bottom: 12.5rem;
     }
+
     ul {
       list-style: none;
+      overflow: hidden;
+      @media (max-width: 1024px) {
+        width: 100%;
+        max-height: 0;
+      }
       li {
-        font-size: 2.2rem;
-        color: #8a959b;
-        margin-bottom: 0.8rem;
-        &:hover {
-          color: #fff;
+        display: flex;
+        flex-direction: column;
+      }
+      li .course-item {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        padding: 1.8rem 0;
+        .course-name {
+          font-family: "PT-sans", sans-serif;
+          font-size: 2.2rem;
+          font-weight: 400;
+        }
+        .course-mode {
+          font-family: "PT-sans", sans-serif;
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+
+        * {
+          transition: ease-in-out 0.3s;
+          color: #8a959b;
+        }
+      }
+
+      li .courses-content-trace {
+        display: block;
+        width: 100%;
+        height: 0.1rem;
+        background-color: #8a959b;
+        transition: ease-in-out 0.3s;
+      }
+
+      li:hover {
+        .course-name {
+          color: #f80d5a;
+        }
+        .course-mode {
+          color: #f80d5a;
+        }
+
+        .courses-content-trace {
+          background-color: #f80d5a;
         }
       }
     }

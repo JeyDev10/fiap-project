@@ -5,12 +5,15 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+import { useIsMobile } from "@/app/hooks/useIsMobile"
+
 import "./intro.scss"
 
 gsap.registerPlugin(ScrollTrigger)
 
 export function IntroSection() {
   const imageContainerRef = useRef<HTMLDivElement>(null)
+  const isMobile = useIsMobile()
 
   useGSAP(() => {
     // Animations for intro first texts
@@ -106,34 +109,65 @@ export function IntroSection() {
           TECNOLOGIA, INOVAÇÃO E NEGÓCIOS. PRESENTE E FUTURO.
         </p>
       </div>
-
-      <div ref={imageContainerRef} className="image-container">
-        <div className="image-reveal-section">
-          <div className="image-reveal-container"></div>
-          <Image
-            className="intro-image"
-            src="/imgs/intro.png"
-            alt="Fiap Campus"
-            width={1495}
-            height={804}
-          />
-        </div>
-
-        <div className="image-texts-container">
-          <div className="image-text-slide">
-            <p className="image-text-slide-left">CONHECIMENTO ○ SKILLS ○ </p>
-            <p className="image-text-slide-left">CONHECIMENTO ○ SKILLS ○</p>
+      {!isMobile && (
+        <div ref={imageContainerRef} className="image-container">
+          <div className="image-reveal-section">
+            <div className="image-reveal-container"></div>
+            <Image
+              className="intro-image"
+              src="/imgs/intro.png"
+              alt="Fiap Campus"
+              width={1495}
+              height={804}
+            />
           </div>
-          <div className="image-text-slide">
-            <p className="image-text-slide-right">
-              MUITO. MUITO ALÉM DOS TUTORIAIS MUITO. MUITO ALÉM DOS TUTORIAIS
-            </p>
-            <p className="image-text-slide-right">
-              MUITO. MUITO ALÉM DOS TUTORIAIS MUITO. MUITO ALÉM DOS TUTORIAIS
-            </p>
+
+          <div className="image-texts-container">
+            <div className="image-text-slide">
+              <p className="image-text-slide-left">
+                CONHECIMENTO
+                <Image
+                  src="svgs/ellipse.svg"
+                  alt="ellipse to split texts"
+                  width={38}
+                  height={38}
+                />
+                SKILLS
+                <Image
+                  src="svgs/ellipse.svg"
+                  alt="ellipse to split texts"
+                  width={38}
+                  height={38}
+                />
+              </p>
+              <p className="image-text-slide-left">
+                CONHECIMENTO
+                <Image
+                  src="svgs/ellipse.svg"
+                  alt="ellipse to split texts"
+                  width={38}
+                  height={38}
+                />
+                SKILLS
+                <Image
+                  src="svgs/ellipse.svg"
+                  alt="ellipse to split texts"
+                  width={38}
+                  height={38}
+                />
+              </p>
+            </div>
+            <div className="image-text-slide">
+              <p className="image-text-slide-right">
+                MUITO. MUITO ALÉM DOS TUTORIAIS MUITO. MUITO ALÉM DOS TUTORIAIS
+              </p>
+              <p className="image-text-slide-right">
+                MUITO. MUITO ALÉM DOS TUTORIAIS MUITO. MUITO ALÉM DOS TUTORIAIS
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }
