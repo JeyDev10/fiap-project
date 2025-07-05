@@ -78,7 +78,7 @@ export function IntroSection() {
         slideToRightAnimation.timeScale(1)
       })
 
-      gsap.to(".image-reveal-container", {
+      gsap.to(".image-reveal-transition-panel", {
         scrollTrigger: imageContainerRef.current,
         yPercent: 200,
         duration: 8,
@@ -86,7 +86,7 @@ export function IntroSection() {
         toggleActions: "play none none reverse"
       })
     },
-    { scope: imageContainerRef }
+    { scope: imageContainerRef, dependencies: [window.innerWidth] }
   )
 
   return (
@@ -111,8 +111,8 @@ export function IntroSection() {
       </div>
       {!isMobile && (
         <div ref={imageContainerRef} className="image-container">
-          <div className="image-reveal-section">
-            <div className="image-reveal-container"></div>
+          <div className="image-reveal-container">
+            <div className="image-reveal-transition-panel" />
             <Image
               className="intro-image"
               src="/imgs/intro.png"

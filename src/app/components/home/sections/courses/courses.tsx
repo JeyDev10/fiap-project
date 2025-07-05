@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useMemo, useState, useCallback } from "react"
 import { renderToStaticMarkup } from "react-dom/server"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -88,6 +88,8 @@ export function CoursesSection() {
 
   const { contextSafe } = useGSAP()
 
+  const tl = gsap.timeline()
+
   const onClickMobileButton = contextSafe((course: CourseType) => {
     const listContainer = document.querySelector(
       `.${course}-list`
@@ -112,7 +114,7 @@ export function CoursesSection() {
     })
   })
 
-  const handleRenderCourseContent = (course: CourseType) => (
+  const renderCourseslist = (course: CourseType) => (
     <>
       <div className="courses-title-container">
         <span className="courses-content-title">
@@ -143,11 +145,27 @@ export function CoursesSection() {
     </>
   )
 
+  const mobileCourseList = useMemo(() => {
+    if (!isMobile) return
+
+    setCurrentCourse(undefined)
+    const coursesContent = document.querySelector(".courses-content")
+
+    if (!coursesContent) return
+
+    coursesContent.innerHTML = ""
+
+    return Object.entries(courseContentMap).map(([courseType], index) => {
+      return (
+        <div key={`${courseType}-${index}`} className="mobile-course-item">
+          {renderCourseslist(courseType as CourseType)}
+        </div>
+      )
+    })
+  }, [isMobile])
+
   const handleCourseClick = contextSafe((course: CourseType) => {
-    if (course === currentCourse) return
-
-    const tl = gsap.timeline()
-
+    if (tl.isActive()) return
     gsap.utils
       .toArray([".courses-content > span", ".courses-content ul li"])
       .forEach((element) => {
@@ -191,17 +209,14 @@ export function CoursesSection() {
     )
       .then(() => {
         coursesContent.innerHTML = renderToStaticMarkup(
-          handleRenderCourseContent(course)
+          renderCourseslist(course)
         )
       })
       .then(() => {
         tl.to(coursesContent, {
           opacity: 1,
           duration: 0.5,
-          ease: "power2.inOut",
-          onComplete: () => {
-            setCurrentCourse(course)
-          }
+          ease: "power2.inOut"
         })
         tl.to(
           `.${course}-trace`,
@@ -222,19 +237,23 @@ export function CoursesSection() {
           "<"
         )
       })
+    tl.call(() => {
+      setCurrentCourse(course)
+      tl.kill()
+    })
   })
 
   useGSAP(() => {
-    if (!isMobile) {
+    if (!isMobile && !currentCourse) {
       ScrollTrigger.create({
-        once: true,
         trigger: ".courses-section",
+        once: true,
         onEnter: () => {
-          handleCourseClick("tecnologia")
+          handleCourseClick(currentCourse ?? "tecnologia")
         }
       })
     }
-  }, [])
+  }, [isMobile, currentCourse])
 
   return (
     <section className="courses-section">
@@ -278,12 +297,7 @@ export function CoursesSection() {
         </div>
       )}
 
-      <div className="courses-content">
-        {isMobile &&
-          Object.entries(courseContentMap).map(([courseType]) => {
-            return handleRenderCourseContent(courseType as CourseType)
-          })}
-      </div>
+      <div className="courses-content">{mobileCourseList}</div>
     </section>
   )
 }
