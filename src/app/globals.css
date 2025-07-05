@@ -9,9 +9,9 @@
 html {
   font-size: 0.520833vw;
   font-weight: 500;
-  /* @media (max-width: 1024px) {
+  @media (max-width: 1024px) {
     font-size: calc(0.976562vw);
-  } */
+  }
 }
 
 html,

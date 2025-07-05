@@ -1,7 +1,11 @@
 .faq-section {
   margin-top: 32.2rem;
   margin-bottom: 32.2rem;
-  padding: 1rem 21.1rem 1rem 21.1rem;
+  padding: 1rem 21.1rem;
+
+  @media (max-width: 1024px) {
+    padding: 9rem 8rem;
+  }
 
   .title-container {
     display: flex;
@@ -17,12 +21,18 @@
       color: #fff;
       text-align: left;
       margin-bottom: 1.3rem;
+      @media (max-width: 1024px) {
+        font-size: 13rem;
+      }
     }
 
     .faq-subtitle {
       font-size: 2.2rem;
       color: #f80d5a;
       text-align: left;
+      @media (max-width: 1024px) {
+        font-size: 4.5rem;
+      }
     }
   }
 
@@ -32,9 +42,17 @@
     flex-wrap: wrap;
     align-content: stretch;
     gap: 11.2rem;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+
     .question-item {
       width: 41.5rem;
       overflow: hidden;
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
 
       .question-trace {
         height: 1px;
@@ -50,6 +68,10 @@
         font-size: 2rem;
         color: #949b99;
         margin-bottom: 0.7rem;
+
+        @media (max-width: 1024px) {
+          font-size: 5rem;
+        }
       }
       .answer {
         width: 100%;
@@ -58,6 +80,10 @@
         color: #949b99;
         opacity: 0;
         transition: opacity 0.5s ease-out;
+
+        @media (max-width: 1024px) {
+          font-size: 4rem;
+        }
       }
       &:hover {
         .question {

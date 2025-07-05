@@ -9,7 +9,7 @@ gsap.registerPlugin(SplitText)
 import "./header.scss"
 
 export function HeaderSection() {
-  useGSAP(() => {
+  useGSAP(function handleAnimatesText() {
     gsap.set(".header-paragraph span", { opacity: 1 })
     let split = SplitText.create(".header-paragraph span", {
       type: "words",

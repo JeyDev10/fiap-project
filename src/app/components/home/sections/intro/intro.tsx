@@ -40,14 +40,17 @@ export function IntroSection() {
   useGSAP(
     function handleImageTransition() {
       gsap.to(".image-reveal-transition-panel", {
-        scrollTrigger: imageContainerRef.current,
-        yPercent: 200,
-        duration: 30,
+        scrollTrigger: {
+          trigger: imageContainerRef.current,
+          once: true
+        },
+        yPercent: 300,
+        duration: 5,
         ease: "power3.out",
         toggleActions: "play none none reverse"
       })
     },
-    { scope: imageContainerRef }
+    { scope: imageContainerRef, dependencies: [window.innerWidth] }
   )
 
   useGSAP(

@@ -153,7 +153,7 @@ export function CoursesSection() {
 
     if (!coursesContent) return
 
-    coursesContent.innerHTML = ""
+    coursesContent.replaceChildren("")
 
     return Object.entries(courseContentMap).map(([courseType], index) => {
       return (
@@ -243,26 +243,36 @@ export function CoursesSection() {
     })
   })
 
-  useGSAP(() => {
-    if (!isMobile && !currentCourse) {
-      ScrollTrigger.create({
-        trigger: ".courses-section",
-        once: true,
-        onEnter: () => {
-          handleCourseClick(currentCourse ?? "tecnologia")
-        }
-      })
-    }
-  }, [isMobile, currentCourse])
+  useGSAP(function createCourseInitialAnimation() {
+    ScrollTrigger.create({
+      trigger: ".courses-section",
+      once: true,
+      id: "teste-scroll",
+      onEnter: () => {
+        handleCourseClick(currentCourse ?? "tecnologia")
+      }
+    }).disable()
+  })
+
+  useGSAP(
+    function playCourseInitialAnimation() {
+      if (!isMobile && !currentCourse) {
+        ScrollTrigger.getById("teste-scroll")?.enable()
+      } else {
+        ScrollTrigger.getById("teste-scroll")?.disable()
+      }
+    },
+    [isMobile, currentCourse]
+  )
 
   return (
     <section className="courses-section">
-      {!isMobile && (
-        <div className="courses-header">
-          <div className="title-container">
-            <h2 className="courses-title">Cursos</h2>
-            <h3 className="courses-subtitle">Cursos de Curta Duração</h3>
-          </div>
+      <div className="courses-header">
+        <div className="title-container">
+          <h2 className="courses-title">Cursos</h2>
+          <h3 className="courses-subtitle">Cursos de Curta Duração</h3>
+        </div>
+        {!isMobile && (
           <nav className="courses-nav">
             <ul>
               <li>
@@ -294,8 +304,8 @@ export function CoursesSection() {
               </li>
             </ul>
           </nav>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="courses-content">{mobileCourseList}</div>
     </section>

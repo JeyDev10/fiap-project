@@ -8,7 +8,9 @@
   }
 
   @media (max-width: 1024px) {
-    padding: 1rem 4rem 1rem 4rem;
+    @media (max-width: 1024px) {
+      padding: 9rem 8rem;
+    }
   }
 
   .courses-header {
@@ -16,18 +18,23 @@
     justify-content: space-between;
     align-items: center;
 
-    .title-container {
-      .courses-title {
-        font-size: 9.2rem;
-        line-height: 9.2rem;
-        color: #fff;
-        text-align: left;
-        margin-bottom: 1.3rem;
+    .courses-title {
+      font-size: 9.2rem;
+      line-height: 9.2rem;
+      color: #fff;
+      text-align: left;
+      margin-bottom: 1.3rem;
+
+      @media (max-width: 1024px) {
+        font-size: 15.5rem;
       }
-      .courses-subtitle {
-        font-size: 2.2rem;
-        color: #f80d5a;
-        text-align: left;
+    }
+    .courses-subtitle {
+      font-size: 2.2rem;
+      color: #f80d5a;
+      text-align: left;
+      @media (max-width: 1024px) {
+        font-size: 5.5rem;
       }
     }
 
