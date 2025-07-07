@@ -130,7 +130,7 @@ export function CoursesSection() {
           </div>
         )}
       </div>
-
+      {isMobile && <div className="courses-content-trace" />}
       <ul className={`${course}-list`}>
         {courseContentMap[course].courses.map((subject, index) => (
           <li key={`${subject.name}-${index}`}>
@@ -166,6 +166,7 @@ export function CoursesSection() {
 
   const handleCourseClick = contextSafe((course: CourseType) => {
     if (tl.isActive()) return
+
     gsap.utils
       .toArray([".courses-content > span", ".courses-content ul li"])
       .forEach((element) => {
@@ -191,7 +192,8 @@ export function CoursesSection() {
         {
           color: "#8a959b",
           duration: 0.2,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
+          clearProps: "color"
         },
         "<"
       )
@@ -239,15 +241,13 @@ export function CoursesSection() {
       })
     tl.call(() => {
       setCurrentCourse(course)
-      tl.kill()
     })
   })
 
   useGSAP(function createCourseInitialAnimation() {
     ScrollTrigger.create({
       trigger: ".courses-section",
-      once: true,
-      id: "teste-scroll",
+      id: "image-scroll-trigger",
       onEnter: () => {
         handleCourseClick(currentCourse ?? "tecnologia")
       }
@@ -257,9 +257,9 @@ export function CoursesSection() {
   useGSAP(
     function playCourseInitialAnimation() {
       if (!isMobile && !currentCourse) {
-        ScrollTrigger.getById("teste-scroll")?.enable()
+        ScrollTrigger.getById("image-scroll-trigger")?.enable()
       } else {
-        ScrollTrigger.getById("teste-scroll")?.disable()
+        ScrollTrigger.getById("image-scroll-trigger")?.disable()
       }
     },
     [isMobile, currentCourse]

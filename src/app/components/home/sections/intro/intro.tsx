@@ -45,12 +45,12 @@ export function IntroSection() {
           once: true
         },
         yPercent: 300,
-        duration: 5,
+        duration: 10,
         ease: "power3.out",
         toggleActions: "play none none reverse"
       })
     },
-    { scope: imageContainerRef, dependencies: [window.innerWidth] }
+    { scope: imageContainerRef, dependencies: [isMobile] }
   )
 
   useGSAP(
@@ -108,7 +108,7 @@ export function IntroSection() {
         )
       })
     },
-    { scope: imageContainerRef, dependencies: [window.innerWidth] }
+    { scope: imageContainerRef, dependencies: [isMobile] }
   )
 
   return (

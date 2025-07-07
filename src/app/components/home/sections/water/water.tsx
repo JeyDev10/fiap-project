@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 
@@ -10,6 +12,11 @@ export function WaterSection() {
 
     canvas.style.display = "block"
     canvas.style.margin = "0 auto"
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth > 1920 ? 1920 : window.innerWidth
+      canvas.height = window.innerHeight > 1080 ? 1080 : window.innerHeight
+    })
 
     if (!context) return
     const frameCount = 191
@@ -44,10 +51,18 @@ export function WaterSection() {
     images[0].onload = render
 
     function render() {
+      const img = images[water.frame]
       context?.clearRect(0, 0, canvas.width, canvas.height)
-      context?.drawImage(images[water.frame], 0, 0)
+      const hRatio = canvas.width / img.width
+      const vRatio = canvas.height / img.height
+      const ratio = Math.max(hRatio, vRatio)
+      const newWidth = img.width * ratio
+      const newHeight = img.height * ratio
+      const x = (canvas.width - newWidth) / 2
+      const y = (canvas.height - newHeight) / 2
+      context?.drawImage(img, x, y, newWidth, newHeight)
     }
-  }, [window.innerWidth, window.innerHeight])
+  }, [])
 
   return (
     <section className="water-section">

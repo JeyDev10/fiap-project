@@ -70,12 +70,21 @@
     margin-top: 3rem;
     gap: 3rem;
 
+    .courses-content-trace {
+      display: block;
+      width: 100%;
+      height: 0.1rem;
+      background-color: #8a959b;
+      transition: ease-in-out 0.3s;
+    }
+
     .courses-title-container {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 12.5rem;
+
       .expand-button {
         position: relative;
         height: 10rem;
@@ -136,29 +145,32 @@
         align-items: center;
         gap: 1.6rem;
         padding: 1.8rem 0;
+        @media (max-width: 1024px) {
+          flex-direction: column-reverse;
+          align-items: start;
+        }
         .course-name {
           font-family: "PT-sans", sans-serif;
           font-size: 2.2rem;
           font-weight: 400;
+          @media (max-width: 1024px) {
+            font-size: 4.5rem;
+          }
         }
         .course-mode {
           font-family: "PT-sans", sans-serif;
           font-size: 1.3rem;
+          line-height: 1.3rem;
           font-weight: 500;
+          @media (max-width: 1024px) {
+            font-size: 2.5rem;
+          }
         }
 
         * {
           transition: ease-in-out 0.3s;
           color: #8a959b;
         }
-      }
-
-      li .courses-content-trace {
-        display: block;
-        width: 100%;
-        height: 0.1rem;
-        background-color: #8a959b;
-        transition: ease-in-out 0.3s;
       }
 
       li:hover {
