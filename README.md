@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+Para instalar as dependências basta executar o comando:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para executar o projeto rode o seguinte comando:
+
+```bash
+yarn dev
+```
+
+Visualize o projeto em [http://localhost:3000](http://localhost:3000) em qualquer Browser.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Ferramentas utilizadas
+- NextJs com Typerscript
+- Sass
+- Gsap(Animações)
 
-To learn more about Next.js, take a look at the following resources:
+## Ponto de alteração
+Tomei liberdade de criar uma animação de teste alternativa ao protótipo:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![mobile-courses-animation](https://github.com/user-attachments/assets/70757a8b-0eb2-42ff-90ac-37e4ab4dd2f3)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Demonstração em desktop:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+##Header
+![header](https://github.com/user-attachments/assets/e18b990b-6fc1-47f9-9ad4-1dd6dd2c1196)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+##Intro
+![desktop-flow-intro-final-min](https://github.com/user-attachments/assets/d9ba0b94-68da-43f8-9af2-afa30f3e5c4d)
+
+
+##Cursos
+![desktop-flow-courses-final](https://github.com/user-attachments/assets/ef8d963d-d860-4e76-bd75-2e555c3c5ebf)
+
+##FAQ
+![desktop-flow-faq-final](https://github.com/user-attachments/assets/74443834-5a27-44ed-a540-1a0391e613c3)
+
+
+##Demonstração em mobile:
+![mobile-flow](https://github.com/user-attachments/assets/063a2241-ee04-4b25-8f4e-9dfe63e58802)
+
