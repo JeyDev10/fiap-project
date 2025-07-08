@@ -32,20 +32,20 @@ Tomei liberdade de criar uma animação de teste alternativa ao protótipo:
 
 ## Demonstração em desktop:
 
-##Header
+## Header
 ![header](https://github.com/user-attachments/assets/e18b990b-6fc1-47f9-9ad4-1dd6dd2c1196)
 
-##Intro
+## Intro
 ![desktop-flow-intro-final-min](https://github.com/user-attachments/assets/d9ba0b94-68da-43f8-9af2-afa30f3e5c4d)
 
 
-##Cursos
+## Cursos
 ![desktop-flow-courses-final](https://github.com/user-attachments/assets/ef8d963d-d860-4e76-bd75-2e555c3c5ebf)
 
-##FAQ
+## FAQ
 ![desktop-flow-faq-final](https://github.com/user-attachments/assets/74443834-5a27-44ed-a540-1a0391e613c3)
 
 
-##Demonstração em mobile:
+## Demonstração em mobile:
 ![mobile-flow](https://github.com/user-attachments/assets/063a2241-ee04-4b25-8f4e-9dfe63e58802)
 
